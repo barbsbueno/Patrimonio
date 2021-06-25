@@ -93,9 +93,4 @@ public class ItemPatrimonio {
 		return true;
 	}
 	
-	
-	
-	
-	
-	
 }
