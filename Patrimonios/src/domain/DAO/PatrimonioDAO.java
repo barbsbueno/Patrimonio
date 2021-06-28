@@ -18,17 +18,17 @@ public class PatrimonioDAO {
 	private BufferedReader br;
 	private BufferedWriter bw;
 	private String arquivo = "./bd/patrimonio.csv";
-	private SimpleDateFormat form = new SimpleDateFormat("DD/MM/YYYY"); //Será impressa como formato de data
+	private SimpleDateFormat form = new SimpleDateFormat("DD/MM/YYYY"); //Sera impressa como formato de data
 
-	//Método para abrir arquivo
-	public ArrayList<ItemPatrimonio> abrir() { //Conteúdo retorna como lista, cada linha do arquivo é um item da lista
+	//Metodo para abrir arquivo
+	public ArrayList<ItemPatrimonio> abrir() { //Conteudo retorna como lista, cada linha do arquivo eh um item da lista
 		itens = new ArrayList<>();
 		
-		try { //Bloco que é monitorado para erros
+		try { //Bloco que eh monitorado para erros
 			br = new BufferedReader(new FileReader(arquivo)); //Nos da o arquivo que vai ser lido
 			String line = "";
 			
-			//Vai percorrer o arquivo até o final
+			//Vai percorrer o arquivo ate o final
 			while ((line = br.readLine()) != null) { //Armazena cada linha lida na variavel 'line' enquanto for diferente de nulo
 				String[] pose = line.split(";"); //Vai separar cada atributo (id, data, etc.) com ';' armazenando no vetor 'pose'
 				//Colocando os valores em cada um dos indices dos vetores (Integer, Double, String)
@@ -38,7 +38,7 @@ public class PatrimonioDAO {
 			br.close();
 		} catch (IOException e) { //Tratamento de erros
 			System.out.println("Erro ao abrir arquivo: " + e);
-		} catch (NumberFormatException e) {  //A String não tem formato apropriado para ser convertida em tipos numéricos
+		} catch (NumberFormatException e) {  //A String nao tem formato apropriado para ser convertida em tipos numéricos
 			System.out.println("Erro ao converter números: " + e);
 		} catch (ParseException e) { //Um erro inesperado
 			System.out.println("Erro ao converter datas: " + e);
@@ -47,7 +47,7 @@ public class PatrimonioDAO {
 	}
 
 	//Método para salvar o arquivo
-	public boolean salvar(ArrayList<ItemPatrimonio> vs) { //O conteúdo através de lista
+	public boolean salvar(ArrayList<ItemPatrimonio> vs) { //O conteudo atraves de lista
 		try {
 			bw = new BufferedWriter(new FileWriter(arquivo, false)); //Da um nome e um boolean para quando anexar os dados escritos
 			for (ItemPatrimonio p : vs) { //Percorre cada item da lista 
@@ -57,7 +57,7 @@ public class PatrimonioDAO {
 			return true;
 		} catch (IOException e) {
 			System.out.println("Erro ao salvar arquivo: " + e);
-			return false; //Caso dê erro vai retornar falso
+			return false; //Caso de erro vai retornar falso
 		}
 	}
 }
